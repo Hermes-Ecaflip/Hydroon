@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Klayra</title>
+    <link rel="stylesheet" href="styles/index.css">
+  </head>
+  <body>
+    <header>
+      <h1>Hydroon</h1>
+      <nav>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#mapas">Mapas</a></li>
+          <li><a href="#bestiario">Bestiário</a></li>
+          <li><a href="#adicionar">Adicionar</a></li>
+        </ul>
+      </nav>
+    </header>
+    
+    <main>
+    <form id="formPersonagem">
+    <section id="infoJogador">
+      <h2>Informações do Jogador</h2>
+      <label for="nomeJogador">Nome do Jogador:</label>
+      <input type="text" id="nomeJogador" name="nomeJogador">
+      
+      <label for="nomePersonagem">Nome do Personagem:</label>
+      <input type="text" id="nomePersonagem" name="nomePersonagem">
+      
+      <label for="nivelPersonagem">Nível:</label>
+      <input type="number" id="nivelPersonagem" name="nivelPersonagem">
+      
+      <label for="classePersonagem">Classe:</label>
+      <input type="text" id="classePersonagem" name="classePersonagem">
+      
+      <label for="racaPersonagem">Raça:</label>
+      <input type="text" id="racaPersonagem" name="racaPersonagem">
+      
+      <label for="indolePersonagem">Índole:</label>
+      <input type="text" id="indolePersonagem" name="indolePersonagem">
+      
+      <label for="presencaPersonagem">Presença:</label>
+      <input type="text" id="presencaPersonagem" name="presencaPersonagem">
+    
+      <label for="cabelo">Cabelo:</label>
+      <input type="text" id="cabelo" name="cabelo">
+    
+      <label for="olhos">Olhos:</label>
+      <input type="text" id="olhos" name="olhos">
+    
+      <label for="tamanhoCabelo">Tamanho do Cabelo:</label>
+      <input type="text" id="tamanhoCabelo" name="tamanhoCabelo">
+    
+      <label for="idade">Idade:</label>
+      <input type="number" id="idade" name="idade">
+    
+      <label for="alturaPeso">Altura/Peso:</label>
+      <input type="text" id="alturaPeso" name="alturaPeso">
+
+    </section>
+    
+    <section id="atributos">
+      <h2>Atributos</h2>
+      <div class="attribute-container">
+        <div class="attribute-group">
+          <label for="forca">Força:</label>
+          <input type="number" id="forca" name="forca">
+        </div>
+        <div class="bonus-group">
+          <label for="forca_race_bonus">R</label>
+          <input type="number" id="forca_race_bonus" name="forca_race_bonus">
+        </div>
+        <div class="bonus-group">
+          <label for="forca_class_bonus">B</label>
+          <input type="number" id="forca_class_bonus" name="forca_class_bonus">
+        </div>
+      </div>
+      
+      <div class="attribute-container">
+        <div class="attribute-group">
+          <label for="agilidade">Agilidade:</label>
+          <input type="number" id="agilidade" name="agilidade">
+        </div>
+        <div class="bonus-group">
+          <label for="agilidade_race_bonus">R:</label>
+          <input type="number" id="agilidade_race_bonus" name="agilidade_race_bonus">
+        </div>
+        <div class="bonus-group">
+          <label for="agilidade_class_bonus">B:</label>
+          <input type="number" id="agilidade_class_bonus" name="agilidade_class_bonus">
+        </div>
+      </div>
+      
+      <div class="attribute-container">
+        <div class="attribute-group">
+          <label for="vigor">Vigor:</label>
+          <input type="number" id="vigor" name="vigor">
+        </div>
+        <div class="bonus-group">
+          <label for="vigor_race_bonus">R:</label>
+          <input type="number" id="vigor_race_bonus" name="vigor_race_bonus">
+        </div>
+        <div class="bonus-group">
+          <label for="vigor_class_bonus">B:</label>
+          <input type="number" id="vigor_class_bonus" name="vigor_class_bonus">
+        </div>
+      </div>
+      
+      <div class="attribute-container">
+        <div class="attribute-group">
+          <label for="inteligencia">Inteligência:</label>
+          <input type="number" id="inteligencia" name="inteligencia">
+        </div>
+        <div class="bonus-group">
+          <label for="inteligencia_race_bonus">R:</label>
+          <input type="number" id="inteligencia_race_bonus" name="inteligencia_race_bonus">
+        </div>
+        <div class="bonus-group">
+          <label for="inteligencia_class_bonus">B:</label>
+          <input type="number" id="inteligencia_class_bonus" name="inteligencia_class_bonus">
+        </div>
+      </div>
+      
+      <div class="attribute-container">
+        <div class="attribute-group">
+          <label for="sabedoria">Sabedoria:</label>
+          <input type="number" id="sabedoria" name="sabedoria">
+        </div>
+        <div class="bonus-group">
+          <label for="sabedoria_race_bonus">R:</label>
+          <input type="number" id="sabedoria_race_bonus" name="sabedoria_race_bonus">
+        </div>
+        <div class="bonus-group">
+          <label for="sabedoria_class_bonus">B:</label>
+          <input type="number" id="sabedoria_class_bonus" name="sabedoria_class_bonus">
+        </div>
+      </div>
+      
+      <div class="attribute-container">
+        <div class="attribute-group">
+          <label for="carisma">Carisma:</label>
+          <input type="number" id="carisma" name="carisma">
+        </div>
+        <div class="bonus-group">
+          <label for="carisma_race_bonus">R:</label>
+          <input type="number" id="carisma_race_bonus" name="carisma_race_bonus">
+        </div>
+        <div class="bonus-group">
+          <label for="carisma_class_bonus">B:</label>
+          <input type="number" id="carisma_class_bonus" name="carisma_class_bonus">
+        </div>
+      </div>
+    </section>
+    
+    <section id="bonus">
+      <h2>Bônus</h2>
+      <div id="bonus-total">
+      <p id="bba">B.B.A:</p>
+      <p id="reflexos">Reflexos: </p>
+      <p id="resistencia">Resistência: </p>
+      <p id="bbm">B.B.M: </p>
+      <p id="raciocinio">Raciocínio: </p>
+      <p id="manipulacao">Manipulação: </p>
+     </div>
+      <button type="submit">Salvar Personagem</button>
+    </form>
+  </main>
+
+  <footer>
+    <!-- Seu rodapé aqui -->
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>
