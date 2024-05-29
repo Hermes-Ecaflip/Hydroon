@@ -54,6 +54,24 @@ main {
   background-size: cover;
   background-position: center;
   color: white;
+  width: 100%;
+}
+
+main h2{
+  display: flex;
+  justify-content: center;
+}
+
+#formPersonagem {
+  display: flex;
+}
+
+#infoJogador  {
+  width: 30%;
+}
+
+#atributos {
+  width: 70%;
 }
 
 /* Seções */
@@ -208,4 +226,8 @@ footer {
   color: white;
   padding: 20px;
   text-align: center;
+}
+
+::-webkit-scrollbar {
+  width: 0px;
 }
