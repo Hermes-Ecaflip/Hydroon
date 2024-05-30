@@ -50,7 +50,7 @@ nav ul li a:hover {
 }
 
 main {
-  background-image: url(https://i.pinimg.com/originals/11/4a/3d/114a3d2ae17f215d8358c84ca15d6c27.jpg);
+  background-color: #333;
   background-size: cover;
   background-position: center;
   color: white;
@@ -62,16 +62,24 @@ main h2{
   justify-content: center;
 }
 
-#formPersonagem {
-  display: flex;
+#infoJogadortittle {
+  margin-left: 25px;
 }
 
-#infoJogador  {
-  width: 30%;
+#atributostitlle {
+  margin-right: 30%;
 }
+
+#titulos {
+  display: flex;
+  justify-content: space-between;
+}
+
 
 #atributos {
   width: 70%;
+  height: 70%; 
+  gap: 7px;
 }
 
 /* Seções */
@@ -167,13 +175,6 @@ button:hover {
   flex-direction: column;
 }
 
-.attribute-group {
-  flex: 1 1 200px;
-}
-
-.bonus-group {
-  flex: 1 1 80px;
-}
 
 /* Estilos gerais para os inputs */
 input[type="number"],
@@ -221,13 +222,6 @@ h2 {
   margin-bottom: 10px;
 }
 
-/* Estilos para o rodapé */
-footer {
-  background-color: #333;
-  color: white;
-  padding: 20px;
-  text-align: center;
-}
 
 ::-webkit-scrollbar {
   width: 0px;
