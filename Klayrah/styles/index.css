@@ -8,7 +8,7 @@
 body {
   font-family: Arial, sans-serif;
   line-height: 1.6;
-  background-color: #f9f9f9;
+  background-color: #333;
   color: #333;
 }
 
@@ -50,11 +50,9 @@ nav ul li a:hover {
 }
 
 main {
-  background-color: #333;
-  background-size: cover;
-  background-position: center;
   color: white;
   width: 100%;
+  max-width: 100%;
 }
 
 main h2{
@@ -75,11 +73,20 @@ main h2{
   justify-content: space-between;
 }
 
-
 #atributos {
-  width: 70%;
+  width: 65%;
   height: 70%; 
   gap: 7px;
+}
+
+#imagemdopersonagem {
+width: 30%;
+height: 500px;
+background-color: #660404;
+}
+
+#salvar {
+  margin-left: 45%;
 }
 
 /* Seções */
