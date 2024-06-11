@@ -193,6 +193,7 @@ input[type="text"] {
   border: 3px solid #ccc;
   font-size: 16px;
   background-color: transparent;
+
 }
 
 .light-theme input[type="text"],
@@ -240,4 +241,9 @@ h2 {
 /* Remover barras de rolagem */
 ::-webkit-scrollbar {
   width: 0px;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button{
+   -webkit-appearance:none;
 }
