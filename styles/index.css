@@ -17,16 +17,26 @@ body {
   padding: 20px;
 }
 
-/* Cabeçalho */
 header {
-  background-color: #660404;
-  color: #fff;
-  padding: 20px;
-  text-align: center;
+  background-color: #1c1c1c;
+  border-bottom: 3px solid var(--cor-primaria);
 }
 
-header h1 {
-  font-size: 36px;
+/* Estilos para o tema claro */
+.light-theme {
+  background-color: #FFFFFF; /* Branco Completo */
+  color: #2C2F33; /* Cinza Escuro */
+}
+
+/* Toggle entre temas claro e escuro */
+.theme-toggle {
+  cursor: pointer;
+}
+
+/* Estilos para o tema escuro */
+.dark-theme {
+  background-color: #23272A; /* Preto Quase */
+  color: var(--cor-texto);
 }
 
 nav ul {

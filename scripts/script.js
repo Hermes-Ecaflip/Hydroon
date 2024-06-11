@@ -68,4 +68,31 @@ function calcularBonus() {
     calcularBonus();
     $('input[type="number"]').on('input', calcularBonus);
   });
+
+
+  //TROCAR TEMA
+  // Alternância de tema claro e escuro
+  $('#themeToggle').click(function() {
+    $('body').toggleClass('light-theme dark-theme');
+    var theme = $('body').hasClass('dark-theme') ? 'dark' : 'light';
+    localStorage.setItem('theme', theme);
+    updateThemeIcons();
+  });
+
+  function updateThemeIcons() {
+    if ($('body').hasClass('dark-theme')) {
+      $('.fa-moon').addClass('d-none');
+      $('.fa-sun').removeClass('d-none');
+    } else {
+      $('.fa-sun').addClass('d-none');
+      $('.fa-moon').removeClass('d-none');
+    }
+  }
+
+  if (localStorage.getItem('theme') === 'dark') {
+    $('body').addClass('dark-theme').removeClass('light-theme');
+  } else {
+    $('body').addClass('light-theme').removeClass('dark-theme');
+  }
+  updateThemeIcons();
   
