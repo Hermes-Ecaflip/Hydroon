@@ -25,6 +25,7 @@ header {
 .light-theme {
   background-color: #e9e9e9; /* Branco Completo */
   color: #2C2F33; /* Cinza Escuro */
+  transition: 1s;
 }
 
 /* Toggle entre temas claro e escuro */
@@ -36,6 +37,7 @@ header {
 .dark-theme {
   background-color: #23272A; /* Preto Quase */
   color: var(--cor-texto);
+  transition: 1s;
 }
 
 nav ul {
