@@ -7,9 +7,8 @@
 /* Estilos gerais */
 body {
   font-family: Arial, sans-serif;
-  line-height: 1.6;
   background-color: #333;
-  color: #333;
+  color: #fff;
 }
 
 .container {
@@ -32,6 +31,10 @@ header h1 {
 
 nav ul {
   list-style-type: none;
+}
+
+.nav-link:hover {
+  text-decoration: underline;
 }
 
 nav ul li {
@@ -91,11 +94,9 @@ background-color: #660404;
 
 /* Seções */
 section {
-  background-color: #fff;
-  padding: 20px;
-  margin-bottom: 20px;
-  border-radius: 5px;
   background-color: transparent;
+  padding: 20px;
+  border-radius: 5px;
 }
 
 section h2 {
@@ -180,6 +181,16 @@ button:hover {
 .bonus-group {
   display: flex;
   flex-direction: column;
+}
+
+/* Formulários */
+.form-label {
+  font-weight: bold;
+}
+
+.form-control {
+  background-color: transparent;
+  color: white;
 }
 
 
