@@ -8,6 +8,7 @@
   <title>Klayrah</title>
 </head>
 <body>
+    
     <header>
         <div class="navbar"></div>
     <!-- Botão do offcanvas -->
@@ -20,6 +21,11 @@
     <main>
         <!-- Sessão do carrossel  -->
         <section id="carrossel">
+            <!-- Overlay de loading -->
+            <div class="loading-overlay">
+                <!-- Bolinha girando -->
+                <div class="spinner"></div>
+            </div>
             <div id="carouselExampleIndicators" class="carousel slide">
                 <div class="carousel-indicators">
                     <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -44,12 +50,12 @@
     <div class="offcanvas offcanvas-start" tabindex="-1" id="barralateral" aria-labelledby="offcanvasExampleLabel">
         <div class="offcanvas-header">
             <h5 class="offcanvas-title" id="offcanvasExampleLabel">Klayrah</h5>
-            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            <button type="button" class="btn text-reset position-absolute mt-3 top-0 end-0" data-bs-dismiss="offcanvas" aria-label="Close"><i class="fa-solid fa-xmark fa-xl"></i></button>
         </div>
         <div class="offcanvas-body">
             <!-- Conteúdo do menu aqui -->
             <ul>
-                <li><a href="index.html">Home</a></li>
+                <li class="active"><a href="index.html">Home</a></li>
                 <li><a href="#">Fichas</a></li>
                 <li><a href="#">Bestiario</a></li>
                 <li><a href="#">Mapas</a></li>
@@ -60,6 +66,6 @@
     <script src="https://kit.fontawesome.com/13033c9605.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="scripts/Jquery.js"></script>
-    <script src="scripts/index.js"></script>
+    <script src="scripts/script.js"></script>
 </body>
 </html>
