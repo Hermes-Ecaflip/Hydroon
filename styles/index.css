@@ -47,7 +47,7 @@
 
 /* Estilos adicionais */
 body {
-  background-color: blue;
+  background: linear-gradient(to bottom, #00008B, #136fcb);
 }
 
 #barralateral {
@@ -64,7 +64,7 @@ body {
 /* Estilo para a seção do carrossel */
 #carrossel {
   position: relative;
-  height: 358px;
+  height: 450px;
 }
 
 /* Estilo para o overlay de loading */
@@ -84,7 +84,7 @@ body {
 /* Estilo para a bolinha girando */
 .spinner {
   border: 4px solid #f3f3f3; /* Cor da borda */
-  border-top: 4px solid #3498db; /* Cor da bolinha */
+  border-top: 4px solid #9C1212; /* Cor da bolinha */
   border-radius: 50%;
   width: 30px;
   height: 30px;
