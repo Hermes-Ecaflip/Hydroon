@@ -3,91 +3,277 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-  <link rel="stylesheet" href="styles/index.css">
-  <title>Klayrah</title>
+  <title>Hydroon — Klayrah</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles/main.css">
 </head>
 <body>
-    
-    <header>
-        <div class="navbar"></div>
-    <!-- Botão do offcanvas -->
-        <div id="barranav">
-            <button type="button" class="btn btn-outline-danger p-3 mt-2 ms-2 border-0 position-fixed top-0 start-0" data-bs-toggle="offcanvas" data-bs-target="#barralateral" aria-controls="offcanvasExample">
-                <span class=""><img src="img/Bars.svg" alt="barra"></span> <!-- Ícone de três barras -->
-            </button>
-        </div>
-    </header>
-    <main>
-        <!-- Sessão do carrossel  -->
-        <section id="carrossel mb-5" >
-            <!-- Overlay de loading -->
-            <div class="loading-overlay">
-                <!-- Bolinha girando -->
-                <div class="spinner"></div>
-            </div>
-            <div id="carouselExampleIndicators" class="carousel slide">
-                <div class="carousel-indicators">
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                </div>
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <img src="img/Hydroon.svg" class="d-block w-100" alt="carousel1">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="img/Hydroon 2.svg" class="d-block w-100" alt="carousel2">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="img/Hydroon 3.svg" class="d-block w-100" alt="carousel3">
-                    </div>
-                </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon visually-hidden" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                  </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-                    <span class="carousel-control-next-icon visually-hidden" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
-            </div>
-        </section>
 
-        <!-- Raças -->
-        <section id="racas" class="mt-5">
-            <h1 class="d-flex align-itens-center justify-content-center">SEJA QUEM VOCE QUISER</h1>
-            <div id="atlas" class="">
-                <img src="img/Atlas.png" class="w-100 mt-5" alt="atlas">
-            </div>
-            <div id="ikaruz" class="mt-1">
-                <img src="img/Ikaruz.png" class="w-100" alt="ikaruz">
-            </div>
-            <div id="Karzarcryer" class="mt-1">
-                <img src="img/Karzarcryer.png" class="w-100" alt="ikaruz">
-            </div>
-        </section>
-    </main>
-    <!-- Offcanvas -->
-    <div class="offcanvas offcanvas-start" tabindex="-1" id="barralateral" aria-labelledby="offcanvasExampleLabel">
-        <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="offcanvasExampleLabel">Klayrah</h5>
-            <button type="button" class="btn text-reset position-absolute mt-3 top-0 end-0" data-bs-dismiss="offcanvas" aria-label="Close"><i class="fa-solid fa-xmark fa-xl"></i></button>
-        </div>
-        <div class="offcanvas-body">
-            <!-- Conteúdo do menu aqui -->
-            <ul>
-                <li class="active"><a href="index.html">Home</a></li>
-                <li><a href="ficha.html">Fichas</a></li>
-                <li><a href="#">Bestiario</a></li>
-                <li><a href="#">Mapas</a></li>
-            </ul>
-        </div>
+  <!-- LOADING OVERLAY -->
+  <div class="loading-overlay" id="loadingOverlay">
+    <div class="loading-content">
+      <div class="loading-rune"></div>
+      <p class="loading-text">Adentrando Klayrah...</p>
     </div>
-    <!-- Scripts -->
-    <script src="https://kit.fontawesome.com/13033c9605.js" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <script src="scripts/Jquery.js"></script>
-    <script src="scripts/script.js"></script>
+  </div>
+
+  <!-- NAVBAR -->
+  <nav class="site-nav" id="siteNav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <span class="logo-glyph">✦</span>
+        <span class="logo-text">HYDROON</span>
+      </a>
+      <div class="nav-links">
+        <a href="index.html" class="nav-link active">Início</a>
+        <a href="racas.html" class="nav-link">Raças</a>
+        <a href="ficha.html" class="nav-link">Fichas</a>
+        <a href="bestiario.html" class="nav-link">Bestiário</a>
+        <a href="mapas.html" class="nav-link">Mapas</a>
+      </div>
+      <button class="nav-menu-btn" id="menuBtn" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu-inner">
+      <a href="index.html" class="mobile-link">Início</a>
+      <a href="racas.html" class="mobile-link">Raças</a>
+      <a href="ficha.html" class="mobile-link">Fichas</a>
+      <a href="bestiario.html" class="mobile-link">Bestiário</a>
+      <a href="mapas.html" class="mobile-link">Mapas</a>
+    </div>
+  </div>
+
+  <!-- HERO BANNER -->
+  <section class="hero" id="hero">
+    <div class="hero-bg">
+      <div class="hero-particles" id="heroParticles"></div>
+      <div class="hero-glow"></div>
+    </div>
+    <div class="hero-content">
+      <p class="hero-eyebrow">O Mundo de</p>
+      <h1 class="hero-title">KLAYRAH</h1>
+      <p class="hero-subtitle">Um mundo onde antigas profecias moldam o destino dos que ousam desafiá-lo.<br>Escolha sua raça. Forje sua lenda.</p>
+      <div class="hero-cta">
+        <a href="ficha.html" class="btn-primary-cta">Criar Personagem</a>
+        <a href="racas.html" class="btn-secondary-cta">Explorar Raças</a>
+      </div>
+    </div>
+    <div class="hero-scroll-hint">
+      <span>↓</span>
+      <p>Role para explorar</p>
+    </div>
+  </section>
+
+  <!-- BANNER CARROSSEL -->
+  <section class="carousel-section">
+    <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="5000">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"></button>
+        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"></button>
+        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2"></button>
+      </div>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="img/Hydroon.svg" class="d-block w-100" alt="Hydroon — A Era do Silêncio">
+          <div class="carousel-caption-custom">
+            <h3>A Era do Silêncio</h3>
+            <p>Quando os deuses ainda sussurravam entre si</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="img/Hydroon 2.svg" class="d-block w-100" alt="Hydroon — O Chamado das Runas">
+          <div class="carousel-caption-custom">
+            <h3>O Chamado das Runas</h3>
+            <p>Antigas inscrições guardam o segredo da criação</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="img/Hydroon 3.svg" class="d-block w-100" alt="Hydroon — A Grande Confluência">
+          <div class="carousel-caption-custom">
+            <h3>A Grande Confluência</h3>
+            <p>Três raças. Um destino.</p>
+          </div>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+        <span class="carousel-arrow">‹</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+        <span class="carousel-arrow">›</span>
+      </button>
+    </div>
+  </section>
+
+  <!-- INTRO DO MUNDO -->
+  <section class="world-intro">
+    <div class="world-intro-inner">
+      <div class="section-label">O Universo</div>
+      <h2 class="section-title">Um Mundo Além da Compreensão</h2>
+      <p class="section-text">Klayrah é um plano de existência onde magia e realidade se entrelaçam em padrões que desafiam a razão. Desde o colapso das Torres Celestiais, as três grandes raças disputam territórios, segredos e a própria essência do que significa existir neste mundo fragmentado.</p>
+      <div class="world-stats">
+        <div class="world-stat">
+          <span class="stat-number">3</span>
+          <span class="stat-label">Raças Ancestrais</span>
+        </div>
+        <div class="world-stat">
+          <span class="stat-number">∞</span>
+          <span class="stat-label">Histórias Possíveis</span>
+        </div>
+        <div class="world-stat">
+          <span class="stat-number">7</span>
+          <span class="stat-label">Regiões Conhecidas</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RAÇAS -->
+  <section class="racas-section" id="racas">
+    <div class="racas-header">
+      <div class="section-label">Raças</div>
+      <h2 class="section-title">SEJA QUEM VOCÊ QUISER</h2>
+      <p class="section-text">Cada raça carrega séculos de história, dor e glória. Escolha seu legado.</p>
+    </div>
+
+    <div class="racas-grid">
+
+      <!-- Atlas -->
+      <div class="raca-card" data-raca="atlas">
+        <div class="raca-img-wrap">
+          <img src="img/Atlas.png" alt="Atlas" class="raca-img">
+          <div class="raca-img-overlay"></div>
+        </div>
+        <div class="raca-info">
+          <div class="raca-badge">Guardiões da Terra</div>
+          <h3 class="raca-nome">Atlas</h3>
+          <p class="raca-desc">Colossais e inabaláveis, os Atlas são os ancestrais de pedra e vontade. Erguem montanhas com suas mãos e carregam o peso de impérios em seus ombros. Sua sabedoria é geológica — medida em eras, não em anos.</p>
+          <div class="raca-atributos">
+            <div class="atributo">
+              <span class="atr-nome">Força</span>
+              <div class="atr-barra"><div class="atr-fill" style="--val:95%"></div></div>
+            </div>
+            <div class="atributo">
+              <span class="atr-nome">Resistência</span>
+              <div class="atr-barra"><div class="atr-fill" style="--val:90%"></div></div>
+            </div>
+            <div class="atributo">
+              <span class="atr-nome">Agilidade</span>
+              <div class="atr-barra"><div class="atr-fill" style="--val:35%"></div></div>
+            </div>
+            <div class="atributo">
+              <span class="atr-nome">Magia</span>
+              <div class="atr-barra"><div class="atr-fill" style="--val:50%"></div></div>
+            </div>
+          </div>
+          <a href="ficha.html?raca=atlas" class="raca-btn">Jogar como Atlas</a>
+        </div>
+      </div>
+
+      <!-- Ikaruz -->
+      <div class="raca-card featured" data-raca="ikaruz">
+        <div class="raca-featured-badge">Popular</div>
+        <div class="raca-img-wrap">
+          <img src="img/Ikaruz.png" alt="Ikaruz" class="raca-img">
+          <div class="raca-img-overlay"></div>
+        </div>
+        <div class="raca-info">
+          <div class="raca-badge">Filhos do Vento</div>
+          <h3 class="raca-nome">Ikaruz</h3>
+          <p class="raca-desc">Nascidos entre as nuvens e os relâmpagos, os Ikaruz dominam os céus com uma graça mortal. Sua agilidade é sobrenatural e sua conexão com os ventos permite feitos que desafiam a física — e o bom senso.</p>
+          <div class="raca-atributos">
+            <div class="atributo">
+              <span class="atr-nome">Força</span>
+              <div class="atr-barra"><div class="atr-fill" style="--val:55%"></div></div>
+            </div>
+            <div class="atributo">
+              <span class="atr-nome">Resistência</span>
+              <div class="atr-barra"><div class="atr-fill" style="--val:60%"></div></div>
+            </div>
+            <div class="atributo">
+              <span class="atr-nome">Agilidade</span>
+              <div class="atr-barra"><div class="atr-fill" style="--val:98%"></div></div>
+            </div>
+            <div class="atributo">
+              <span class="atr-nome">Magia</span>
+              <div class="atr-barra"><div class="atr-fill" style="--val:75%"></div></div>
+            </div>
+          </div>
+          <a href="ficha.html?raca=ikaruz" class="raca-btn">Jogar como Ikaruz</a>
+        </div>
+      </div>
+
+      <!-- Karzarcryer -->
+      <div class="raca-card" data-raca="karzarcryer">
+        <div class="raca-img-wrap">
+          <img src="img/Karzarcryer.png" alt="Karzarcryer" class="raca-img">
+          <div class="raca-img-overlay"></div>
+        </div>
+        <div class="raca-info">
+          <div class="raca-badge">Tecelões da Sombra</div>
+          <h3 class="raca-nome">Karzarcryer</h3>
+          <p class="raca-desc">Mestres das artes sombrias e das fendas entre planos, os Karzarcryer habitam os espaços esquecidos da realidade. Tecem ilusões tão perfeitas que até os deuses hesitam em confiar nos seus próprios sentidos.</p>
+          <div class="raca-atributos">
+            <div class="atributo">
+              <span class="atr-nome">Força</span>
+              <div class="atr-barra"><div class="atr-fill" style="--val:40%"></div></div>
+            </div>
+            <div class="atributo">
+              <span class="atr-nome">Resistência</span>
+              <div class="atr-barra"><div class="atr-fill" style="--val:45%"></div></div>
+            </div>
+            <div class="atributo">
+              <span class="atr-nome">Agilidade</span>
+              <div class="atr-barra"><div class="atr-fill" style="--val:70%"></div></div>
+            </div>
+            <div class="atributo">
+              <span class="atr-nome">Magia</span>
+              <div class="atr-barra"><div class="atr-fill" style="--val:100%"></div></div>
+            </div>
+          </div>
+          <a href="ficha.html?raca=karzarcryer" class="raca-btn">Jogar como Karzarcryer</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CHAMADA PARA AÇÃO -->
+  <section class="cta-section">
+    <div class="cta-inner">
+      <div class="cta-rune">✦</div>
+      <h2>Pronto para Forjar sua Lenda?</h2>
+      <p>Crie sua ficha de personagem e comece sua jornada em Klayrah agora mesmo.</p>
+      <a href="ficha.html" class="btn-primary-cta">Começar Agora</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-logo">
+        <span class="logo-glyph">✦</span>
+        <span>HYDROON</span>
+      </div>
+      <nav class="footer-nav">
+        <a href="index.html">Início</a>
+        <a href="racas.html">Raças</a>
+        <a href="ficha.html">Fichas</a>
+        <a href="bestiario.html">Bestiário</a>
+        <a href="mapas.html">Mapas</a>
+      </nav>
+      <p class="footer-copy">© 2024 Klayrah · Todos os direitos reservados</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="scripts/main.js"></script>
 </body>
 </html>
