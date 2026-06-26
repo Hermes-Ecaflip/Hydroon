@@ -3,12 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ficha de Personagem — Klayrah</title>
+  <title>Ficha — AERMYNUZ: O Império Fantasma</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="styles/ficha.css">
+  <script src="scripts/vendor/jspdf.umd.min.js"></script>
+  <script src="scripts/vendor/html2canvas.min.js"></script>
+  <script>
+    // Fallback para CDN caso os arquivos locais não carreguem
+    if (typeof window.jspdf === "undefined") {
+      document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"><\/script>');
+    }
+    if (typeof window.html2canvas === "undefined") {
+      document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"><\/script>');
+    }
+  </script>
 </head>
 <body>
 
@@ -49,195 +61,296 @@
   </div>
 
   <main class="ficha-page">
-    <div class="ficha-page">
-      <div class="page-header">
-        <div class="section-label">Klayrah</div>
-        <h1 class="section-title">Ficha de Personagem</h1>
-        <p class="section-text">Preencha os dados do seu personagem. A ficha é salva automaticamente no seu navegador.</p>
-      </div>
+    <div class="page-header no-print">
+      <div class="section-label">AERMYNUZ</div>
+      <h1 class="section-title">O Império Fantasma</h1>
+      <p class="section-text">Ficha oficial de personagem. Preencha os campos, imprima ou baixe em PDF.</p>
+    </div>
 
-      <div class="ficha-container">
-        <form id="fichaForm" class="ficha-form" onsubmit="return false;">
+    <!-- TOOLBAR -->
+    <div class="ficha-toolbar no-print">
+      <button type="button" class="ff-btn ff-btn-print" id="btnImprimir">🖨 Imprimir Ficha</button>
+      <button type="button" class="ff-btn ff-btn-pdf" id="btnPDF">⬇ Baixar PDF</button>
+      <button type="button" class="ff-btn ff-btn-ghost" id="btnSalvar">Salvar</button>
+      <button type="button" class="ff-btn ff-btn-ghost" id="btnLimpar">Limpar</button>
+    </div>
 
-          <!-- IDENTIDADE -->
-          <div class="ficha-section-title">✦ Identidade</div>
-          <div class="ficha-grid">
-            <div class="field-group">
-              <label for="nome">Nome do Personagem</label>
-              <input type="text" name="nome" id="nome" placeholder="Nome verdadeiro...">
-            </div>
-            <div class="field-group">
-              <label for="titulo">Título / Apelido</label>
-              <input type="text" name="titulo" placeholder="O que te chamam...">
-            </div>
-            <div class="field-group">
-              <label for="racaSelect">Raça</label>
-              <select name="raca" id="racaSelect">
-                <option value="">Selecione sua raça...</option>
-                <option value="atlas">Atlas — Guardiões da Terra</option>
-                <option value="ikaruz">Ikaruz — Filhos do Vento</option>
-                <option value="karzarcryer">Karzarcryer — Tecelões da Sombra</option>
-              </select>
-            </div>
-            <div class="field-group">
-              <label for="classe">Classe / Ocupação</label>
-              <input type="text" name="classe" placeholder="Guerreiro, Mago, Explorador...">
-            </div>
-            <div class="field-group">
-              <label for="nivel">Nível</label>
-              <input type="number" name="nivel" placeholder="1" min="1" max="99">
-            </div>
-            <div class="field-group">
-              <label for="experiencia">Experiência (XP)</label>
-              <input type="number" name="experiencia" placeholder="0" min="0">
-            </div>
-          </div>
+    <!-- ================= FICHA ================= -->
+    <div class="sheet-wrap">
+    <div id="sheet" class="aermynuz-sheet">
+
+      <div class="sheet-title">AERMYNUZ — O IMPÉRIO FANTASMA</div>
+
+      <div class="sheet-cols">
+
+        <!-- ============ COLUNA ESQUERDA ============ -->
+        <div class="sheet-col">
+
+          <!-- INFORMAÇÕES PESSOAIS -->
+          <div class="bar bar-dark center">INFORMAÇÕES PESSOAIS</div>
+          <table class="t info-t">
+            <tr><td class="k">jogador</td><td><input></td><td class="k">t. heroico</td><td><input></td></tr>
+            <tr><td class="k">personagem</td><td colspan="3"><input></td></tr>
+            <tr><td class="k">linhagem</td><td><input></td><td class="k">origem</td><td><input></td></tr>
+            <tr><td class="k">índole</td><td><input></td><td class="k">presença</td><td><input></td></tr>
+            <tr><td class="k">arquétipo</td><td><input></td><td class="k">outros</td><td><input></td></tr>
+          </table>
+
+          <!-- DESCRIÇÃO FÍSICA -->
+          <div class="bar bar-dark center">DESCRIÇÃO FÍSICA</div>
+          <table class="t info-t">
+            <tr><td class="k">idade</td><td><input></td><td class="k">altura</td><td><input></td><td class="k">cabelos</td><td><input></td></tr>
+            <tr><td class="k">peso</td><td><input></td><td class="k">olhos</td><td><input></td><td class="k">pele</td><td><input></td></tr>
+          </table>
 
           <!-- ATRIBUTOS -->
-          <div class="ficha-section-title">✦ Atributos</div>
-          <div class="atributos-grid">
-            <div class="atr-box">
-              <label>FOR</label>
-              <input type="number" name="forca" placeholder="10" min="1" max="30">
+          <table class="t atr-t">
+            <tr class="bar-row">
+              <th class="bar-dark">ATRIBUTOS</th><th>BASE</th><th>NÍVEL</th><th>OUTROS</th><th>TOTAL</th><th class="bar-dark">ÍMPETO</th>
+            </tr>
+            <tr><td class="k r">FORÇA</td><td><input></td><td><input></td><td><input></td><td><input></td><td class="unit">kg</td></tr>
+            <tr><td class="k r">AGILIDADE</td><td><input></td><td><input></td><td><input></td><td><input></td><td class="unit">mts</td></tr>
+            <tr><td class="k r">VIGOR</td><td><input></td><td><input></td><td><input></td><td><input></td><td class="unit">rd</td></tr>
+            <tr><td class="k r">SABEDORIA</td><td><input></td><td><input></td><td><input></td><td><input></td><td class="unit">rdm</td></tr>
+            <tr><td class="k r">INTUIÇÃO</td><td><input></td><td><input></td><td><input></td><td><input></td><td class="unit">Srt</td></tr>
+            <tr><td class="k r">INTELIGÊNCIA</td><td><input></td><td><input></td><td><input></td><td><input></td><td class="unit">cdm</td></tr>
+            <tr><td class="k r">ASTÚCIA</td><td><input></td><td><input></td><td><input></td><td><input></td><td class="unit">est</td></tr>
+            <tr><td class="k bar-dark">PONTO TOTAIS</td><td><input></td><td><input></td><td><input></td><td><input></td><td></td></tr>
+          </table>
+
+          <!-- BÔNUS FÍSICOS + APTIDÕES -->
+          <div class="two-up">
+            <div class="bonus-block">
+              <div class="bar bar-dark center">BÔNUS FÍSICOS</div>
+
+              <div class="bonus-head">B.B.A<span>(FORÇA + AGILIDADE)/3</span></div>
+              <table class="t bonus-t">
+                <tr><th>BASE</th><th>VANT</th><th>REFOR</th><th>OUTROS</th><th>TOTAL</th></tr>
+                <tr><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td></tr>
+              </table>
+
+              <div class="bonus-head">BLOQUEIO<span>(FORÇA + VIGOR)/3</span></div>
+              <table class="t bonus-t">
+                <tr><th>BASE</th><th>VANT</th><th>REFOR</th><th>OUTROS</th><th>TOTAL</th></tr>
+                <tr><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td></tr>
+              </table>
+
+              <div class="bonus-head">REFLEXO<span>(AGILIDADE + ASTÚCIA)/3</span></div>
+              <table class="t bonus-t">
+                <tr><th>BASE</th><th>VANT</th><th>REFOR</th><th>OUTROS</th><th>TOTAL</th></tr>
+                <tr><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td></tr>
+              </table>
             </div>
-            <div class="atr-box">
-              <label>DES</label>
-              <input type="number" name="destreza" placeholder="10" min="1" max="30">
-            </div>
-            <div class="atr-box">
-              <label>CON</label>
-              <input type="number" name="constituicao" placeholder="10" min="1" max="30">
-            </div>
-            <div class="atr-box">
-              <label>INT</label>
-              <input type="number" name="inteligencia" placeholder="10" min="1" max="30">
-            </div>
-            <div class="atr-box">
-              <label>SAB</label>
-              <input type="number" name="sabedoria" placeholder="10" min="1" max="30">
-            </div>
-            <div class="atr-box">
-              <label>CAR</label>
-              <input type="number" name="carisma" placeholder="10" min="1" max="30">
-            </div>
-            <div class="atr-box">
-              <label>MAG</label>
-              <input type="number" name="magia" placeholder="10" min="1" max="30">
-            </div>
-            <div class="atr-box">
-              <label>PER</label>
-              <input type="number" name="percepcao" placeholder="10" min="1" max="30">
-            </div>
-            <div class="atr-box">
-              <label>AGI</label>
-              <input type="number" name="agilidade" placeholder="10" min="1" max="30">
+
+            <div class="apt-block">
+              <table class="t apt-t">
+                <tr><th class="bar-dark apt-name">APTIDÕES</th><th class="bar-dark sm">Bs</th><th class="bar-dark sm">Srt</th></tr>
+                <tr><td class="k">ACROBACIA</td><td><input></td><td><input></td></tr>
+                <tr><td class="k">GUARDA</td><td><input></td><td><input></td></tr>
+                <tr><td class="k">APARAR</td><td><input></td><td><input></td></tr>
+                <tr><td class="k">ATLETISMO</td><td><input></td><td><input></td></tr>
+                <tr><td class="k">RESVALAR</td><td><input></td><td><input></td></tr>
+                <tr><td class="k">RESISTÊNCIA</td><td><input></td><td><input></td></tr>
+                <tr><td class="k">PERSEGUIÇÃO</td><td><input></td><td><input></td></tr>
+                <tr><td class="k">NATAÇÃO</td><td><input></td><td><input></td></tr>
+                <tr><td class="k">FURTIVIDADE</td><td><input></td><td><input></td></tr>
+                <tr><td class="k">PRESTIDIG.</td><td><input></td><td><input></td></tr>
+                <tr><td class="k">CONDUZIR</td><td><input></td><td><input></td></tr>
+                <tr><td class="k">ARTE DA FUGA</td><td><input></td><td><input></td></tr>
+              </table>
             </div>
           </div>
 
-          <!-- PONTOS VITAIS -->
-          <div class="ficha-section-title">✦ Pontos Vitais</div>
-          <div class="hp-section">
-            <div class="hp-box">
-              <label>HP Máximo</label>
-              <input type="number" name="hp_max" placeholder="100" min="0">
+          <!-- BÔNUS MENTAIS + APTIDÕES -->
+          <div class="two-up">
+            <div class="bonus-block">
+              <div class="bar bar-dark center">BÔNUS MENTAIS</div>
+
+              <div class="bonus-head">B.B.M<span>(SABEDORIA + INTELIGÊNCIA)/3</span></div>
+              <table class="t bonus-t">
+                <tr><th>BASE</th><th>VANT</th><th>REFOR</th><th>OUTROS</th><th>TOTAL</th></tr>
+                <tr><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td></tr>
+              </table>
+
+              <div class="bonus-head">PERCEP<span>(INTELIGÊNCIA + INTUIÇÃO)/3</span></div>
+              <table class="t bonus-t">
+                <tr><th>BASE</th><th>VANT</th><th>REFOR</th><th>OUTROS</th><th>TOTAL</th></tr>
+                <tr><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td></tr>
+              </table>
+
+              <div class="bonus-head">RACIONC.<span>(INTELIGÊNCIA + ASTÚCIA)/3</span></div>
+              <table class="t bonus-t">
+                <tr><th>BASE</th><th>VANT</th><th>REFOR</th><th>OUTROS</th><th>TOTAL</th></tr>
+                <tr><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td></tr>
+              </table>
             </div>
-            <div class="hp-box">
-              <label>HP Atual</label>
-              <input type="number" name="hp_atual" placeholder="100" min="0">
-            </div>
-            <div class="hp-box">
-              <label>HP Temporário</label>
-              <input type="number" name="hp_temp" placeholder="0" min="0">
-            </div>
-            <div class="hp-box">
-              <label>Mana Máxima</label>
-              <input type="number" name="mana_max" placeholder="50" min="0">
-            </div>
-            <div class="hp-box">
-              <label>Mana Atual</label>
-              <input type="number" name="mana_atual" placeholder="50" min="0">
-            </div>
-            <div class="hp-box">
-              <label>Armadura (CA)</label>
-              <input type="number" name="armadura" placeholder="10" min="0">
+
+            <div class="apt-block">
+              <table class="t apt-t">
+                <tr><th class="bar-dark apt-name">APTIDÕES</th><th class="bar-dark sm">Bs</th><th class="bar-dark sm">Srt</th></tr>
+                <tr><td class="k">IDIOMAS</td><td><input></td><td><input></td></tr>
+                <tr><td class="k">OBSERVAÇÃO</td><td><input></td><td><input></td></tr>
+                <tr><td class="k">FALSIFICAR</td><td><input></td><td><input></td></tr>
+                <tr><td class="k">PRONTIDÃO</td><td><input></td><td><input></td></tr>
+                <tr><td class="k">AUTO CONTROLE</td><td><input></td><td><input></td></tr>
+                <tr><td class="k">SENTIR MOTIV.</td><td><input></td><td><input></td></tr>
+                <tr><td class="k">SOBREVIVÊNCIA</td><td><input></td><td><input></td></tr>
+                <tr><td class="k">INVESTIGAR</td><td><input></td><td><input></td></tr>
+                <tr><td class="k">BLEFAR</td><td><input></td><td><input></td></tr>
+                <tr><td class="k">ATUAÇÃO</td><td><input></td><td><input></td></tr>
+                <tr><td class="k">DIPLOMACIA</td><td><input></td><td><input></td></tr>
+                <tr><td class="k">OP. MECANIS</td><td><input></td><td><input></td></tr>
+              </table>
             </div>
           </div>
 
-          <!-- HABILIDADES -->
-          <div class="ficha-section-title">✦ Habilidades & Poderes</div>
-          <div class="ficha-grid">
-            <div class="field-group">
-              <label>Habilidade Racial</label>
-              <input type="text" name="hab_racial" placeholder="Poder inato da sua raça...">
-            </div>
-            <div class="field-group">
-              <label>Habilidade de Classe</label>
-              <input type="text" name="hab_classe" placeholder="Técnica especializada...">
-            </div>
-          </div>
-          <div class="field-group" style="margin-bottom: 2.5rem;">
-            <label>Outras Habilidades / Talentos</label>
-            <textarea name="habilidades" placeholder="Liste outros poderes, magias, ou talentos especiais..."></textarea>
-          </div>
+          <!-- PONTOS RESTANTES -->
+          <table class="t rest-t">
+            <tr>
+              <td class="k bar-dark">PONTOS RESTANTES</td>
+              <td class="th-mini">VANT</td><td class="th-mini">EMPREST</td>
+              <td class="th-mini">HABILID.</td><td class="th-mini">EMPREST</td>
+            </tr>
+            <tr>
+              <td></td><td><input></td><td><input></td><td><input></td><td><input></td>
+            </tr>
+          </table>
 
-          <!-- EQUIPAMENTO -->
-          <div class="ficha-section-title">✦ Equipamento & Inventário</div>
-          <div class="ficha-grid" style="margin-bottom:1rem;">
-            <div class="field-group">
-              <label>Arma Principal</label>
-              <input type="text" name="arma_principal" placeholder="Ex: Espada de Obsidiana +2">
-            </div>
-            <div class="field-group">
-              <label>Arma Secundária</label>
-              <input type="text" name="arma_secundaria" placeholder="Ex: Adaga Rúnica">
-            </div>
-            <div class="field-group">
-              <label>Armadura / Escudo</label>
-              <input type="text" name="armadura_item" placeholder="Ex: Cota de Malha Élfar">
-            </div>
-            <div class="field-group">
-              <label>Item Especial</label>
-              <input type="text" name="item_especial" placeholder="Artefato ou item único...">
-            </div>
-          </div>
-          <div class="field-group" style="margin-bottom: 2.5rem;">
-            <label>Inventário Completo</label>
-            <textarea name="inventario" placeholder="Liste todos os itens carregados..."></textarea>
-          </div>
+        </div>
 
-          <!-- BACKGROUND -->
-          <div class="ficha-section-title">✦ História & Personalidade</div>
-          <div class="ficha-grid" style="margin-bottom:1rem;">
-            <div class="field-group">
-              <label>Motivação</label>
-              <input type="text" name="motivacao" placeholder="O que te move a agir?">
-            </div>
-            <div class="field-group">
-              <label>Fraqueza / Defeito</label>
-              <input type="text" name="fraqueza" placeholder="Seu ponto fraco...">
-            </div>
-          </div>
-          <div class="field-group" style="margin-bottom:1rem;">
-            <label>Backstory</label>
-            <textarea name="backstory" placeholder="Conte a origem do seu personagem..." style="min-height: 140px;"></textarea>
-          </div>
-          <div class="field-group" style="margin-bottom: 2.5rem;">
-            <label>Anotações do Mestre / Jogador</label>
-            <textarea name="notas" placeholder="Notas livres para a sessão..." style="min-height: 100px;"></textarea>
-          </div>
+        <!-- ============ COLUNA DIREITA ============ -->
+        <div class="sheet-col">
 
-          <!-- AÇÕES -->
-          <div class="ficha-actions">
-            <button type="button" class="btn-salvar" id="btnSalvar">✦ Salvar Ficha</button>
-            <button type="button" class="btn-limpar" id="btnLimpar">Apagar Dados</button>
-          </div>
+          <!-- DESENVOLVIMENTO -->
+          <div class="bar bar-dark center">DESENVOLVIMENTO</div>
+          <table class="t dev-t">
+            <tr>
+              <td class="k">nível</td><td><input></td>
+              <td class="k">limitador</td><td><input></td>
+              <td class="k">renasc.</td><td><input></td>
+              <td class="k">nvs</td><td><input></td>
+            </tr>
+            <tr>
+              <td class="k">experiência</td><td><input></td>
+              <td class="k" colspan="2">dado de prospec.</td>
+              <td class="k">d4</td><td class="k">d6</td>
+              <td class="k">d8</td><td class="k">d10</td>
+            </tr>
+          </table>
+          <table class="t ameaca-t">
+            <tr>
+              <td class="bar-red ameaca-cell" rowspan="2">AMEAÇA</td>
+              <td class="th-mini">nível</td><td class="th-mini">renasci.</td><td class="th-mini">itens</td>
+              <td class="th-mini">títulos</td><td class="th-mini">outros</td><td class="th-mini bar-red-line">TOTAL</td>
+            </tr>
+            <tr>
+              <td><input></td><td><input></td><td><input></td><td><input></td><td><input></td><td class="total-red"><input></td>
+            </tr>
+          </table>
 
-        </form>
+          <!-- BANCO / EM MÃOS / BENS / SORTE -->
+          <table class="t banco-t">
+            <tr class="bar-row">
+              <th class="bar-dark">BANCO</th><th class="bar-dark">EM MÃOS</th><th class="bar-dark">BENS</th><th class="bar-dark">Nº DA SORTE</th>
+            </tr>
+            <tr><td class="kk">saldo <input></td><td class="kk">saldo <input></td><td class="kk">saldo <input></td><td class="kk">D20 <input></td></tr>
+            <tr><td class="kk">gasto <input></td><td class="kk">gasto <input></td><td class="kk">gasto <input></td><td class="kk">D100 <input></td></tr>
+            <tr><td class="kk">d.o <input></td><td class="kk">d.p <input></td><td class="kk">d.b <input></td><td class="kk">Rq. <input></td></tr>
+          </table>
+
+          <!-- VIDA / MEMBROS -->
+          <table class="t vida-t">
+            <tr>
+              <td class="bar-red">VIDA</td>
+              <td class="th-mini">vg</td><td class="th-mini">nv</td><td class="th-mini">vt</td>
+              <td class="th-mini">rn</td><td class="th-mini">out</td><td class="th-mini" colspan="2">Tt</td>
+            </tr>
+            <tr>
+              <td class="bar-red">MEMBRO</td>
+              <td class="th-mini">porcent</td><td class="th-mini">valor</td><td class="th-mini bar-red-line" colspan="2">RD</td>
+              <td class="th-mini bar-red-line" colspan="2">RDM</td>
+            </tr>
+            <tr><td class="k">CABEÇA</td><td class="pc">75%</td><td><input></td><td colspan="2"><input></td><td colspan="2"><input></td></tr>
+            <tr><td class="k">TRONCO</td><td class="pc">100%</td><td><input></td><td colspan="2"><input></td><td colspan="2"><input></td></tr>
+            <tr><td class="k">BRAÇO.D</td><td class="pc">25%</td><td><input></td><td colspan="2"><input></td><td colspan="2"><input></td></tr>
+            <tr><td class="k">BRAÇO.E</td><td class="pc">25%</td><td><input></td><td colspan="2"><input></td><td colspan="2"><input></td></tr>
+            <tr><td class="k">PERNA.D</td><td class="pc">25%</td><td><input></td><td colspan="2"><input></td><td colspan="2"><input></td></tr>
+            <tr><td class="k">PERNA.E</td><td class="pc">25%</td><td><input></td><td colspan="2"><input></td><td colspan="2"><input></td></tr>
+            <tr><td class="k">SANGUE</td><td class="pc">100%</td><td><input></td><td colspan="2"><input></td><td colspan="2"><input></td></tr>
+          </table>
+
+          <!-- ESSÊNCIA -->
+          <table class="t essencia-t">
+            <tr>
+              <td class="bar-red">ESSÊNCIA</td>
+              <td class="th-mini">V+S/2</td><td class="th-mini">nível</td><td class="th-mini">renasc.</td>
+              <td class="th-mini">vant.</td><td class="th-mini">outros</td><td class="th-mini bar-red-line">TOTAL</td>
+            </tr>
+            <tr>
+              <td class="bar-red sm">G. Fixos</td>
+              <td><input></td><td><input></td><td><input></td><td><input></td><td><input></td><td class="total-red"><input></td>
+            </tr>
+            <tr><td class="k">GASTOS</td><td colspan="6"><input></td></tr>
+          </table>
+
+          <!-- DESTINO -->
+          <div class="bar bar-dark center">DESTINO</div>
+          <table class="t destino-t">
+            <tr>
+              <td class="bar-dark dn">DESESPERO</td>
+              <td class="pips"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></td>
+              <td class="k">Tt</td><td><input></td>
+            </tr>
+            <tr>
+              <td class="bar-dark dn">GLÓRIA</td>
+              <td class="pips"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></td>
+              <td class="k">Tt</td><td><input></td>
+            </tr>
+          </table>
+
+          <!-- EQUIP MÃO ESQUERDA -->
+          <div class="bar bar-dark center">EQUIPAMENTOS MÃO ESQUERDA</div>
+          <table class="t equip-t">
+            <tr><td class="k">nome</td><td colspan="3"><input></td><td class="k">ameaça</td><td><input></td></tr>
+            <tr><td class="k">tipos de dano</td><td colspan="5"><input></td></tr>
+            <tr><td class="k">danos</td><td colspan="5"><input></td></tr>
+            <tr><td class="k">bônus</td><td><input></td><td class="k">gasto</td><td><input></td><td class="k">CD</td><td><input></td></tr>
+            <tr><td class="k">rd</td><td class="th-mini">bônus</td><td class="th-mini">glória</td><td class="th-mini">equip</td><td class="th-mini">outros</td><td class="th-mini bar-red-line">total</td></tr>
+            <tr><td class="k">alcance</td><td><input></td><td><input></td><td><input></td><td><input></td><td class="total-red"><input></td></tr>
+          </table>
+
+          <!-- EQUIP MÃO DIREITA -->
+          <div class="bar bar-dark center">EQUIPAMENTOS MÃO DIREITA</div>
+          <table class="t equip-t">
+            <tr><td class="k">nome</td><td colspan="3"><input></td><td class="k">ameaça</td><td><input></td></tr>
+            <tr><td class="k">tipos de dano</td><td colspan="5"><input></td></tr>
+            <tr><td class="k">danos</td><td colspan="5"><input></td></tr>
+            <tr><td class="k">bônus</td><td><input></td><td class="k">gasto</td><td><input></td><td class="k">CD</td><td><input></td></tr>
+            <tr><td class="k">rd</td><td class="th-mini">bônus</td><td class="th-mini">glória</td><td class="th-mini">equip</td><td class="th-mini">outros</td><td class="th-mini bar-red-line">total</td></tr>
+            <tr><td class="k">alcance</td><td><input></td><td><input></td><td><input></td><td><input></td><td class="total-red"><input></td></tr>
+          </table>
+
+          <!-- VESTIMENTAS -->
+          <div class="bar bar-dark center">VESTIMENTAS</div>
+          <table class="t vest-t">
+            <tr><td class="k">nome</td><td colspan="5"><input></td><td class="k">ameaça</td><td><input></td></tr>
+            <tr>
+              <td class="k">parte</td><td class="th-mini">total</td><td class="th-mini">cabeça</td><td class="th-mini">tronco</td>
+              <td class="th-mini">braço D.</td><td class="th-mini">braço E.</td><td class="th-mini">perna D.</td><td class="th-mini">perna E.</td>
+            </tr>
+            <tr><td class="k">rd</td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td></tr>
+            <tr><td class="k">gasto</td><td class="th-mini">bônus</td><td class="th-mini">glória</td><td class="th-mini">equip</td><td class="th-mini">outros</td><td class="th-mini bar-red-line" colspan="3">total</td></tr>
+            <tr><td class="k">rdm</td><td><input></td><td><input></td><td><input></td><td><input></td><td class="total-red" colspan="3"><input></td></tr>
+          </table>
+
+        </div>
       </div>
     </div>
+    </div>
+
   </main>
 
-  <footer class="site-footer">
+  <footer class="site-footer no-print">
     <div class="footer-inner">
       <div class="footer-logo"><span class="logo-glyph">✦</span><span>HYDROON</span></div>
       <nav class="footer-nav">
@@ -253,5 +366,6 @@
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="scripts/main.js"></script>
+  <script src="scripts/ficha.js"></script>
 </body>
 </html>

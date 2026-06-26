@@ -1,0 +1,25 @@
+FICHA AERMYNUZ — O IMPÉRIO FANTASMA
+=====================================
+
+ARQUIVOS para o seu repositório Hydroon:
+
+  ficha.html                         (substitui o atual)
+  styles/ficha.css                   (substitui o atual)
+  scripts/ficha.js                   (novo)
+  scripts/vendor/jspdf.umd.min.js    (novo - biblioteca p/ gerar PDF)
+  scripts/vendor/html2canvas.min.js  (novo - biblioteca p/ gerar PDF)
+  styles/main.css, scripts/main.js   (inclusos só por referência - ja existem no seu projeto)
+
+COMO INSTALAR:
+  1. Copie a pasta "scripts/vendor" para dentro de "scripts/" no seu repo.
+  2. Substitua ficha.html e styles/ficha.css pelos novos.
+  3. Adicione scripts/ficha.js.
+  4. Commit/push — funciona direto no GitHub Pages.
+
+BOTOES DA FICHA:
+  - Imprimir Ficha — abre o dialogo de impressao (layout fiel a ficha fisica).
+  - Baixar PDF — gera e baixa um PDF da ficha preenchida.
+  - Salvar / Limpar — guarda os dados no navegador (localStorage).
+
+Obs.: jspdf e html2canvas ficam locais, entao o botao de PDF funciona
+mesmo sem internet. Ha fallback automatico via CDN se preciso.
