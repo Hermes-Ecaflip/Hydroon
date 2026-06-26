@@ -1,10 +1,211 @@
-body {
-    font-family: Arial, sans-serif;
-    margin: 20px;
+/* ============================================================
+   FICHA AERMYNUZ — O IMPÉRIO FANTASMA
+   Reprodução fiel da ficha física (barras cinza/vermelho)
+   ============================================================ */
+
+:root{
+  --sheet-dark:#4a4a4a;
+  --sheet-dark-2:#3c3c3c;
+  --sheet-red:#e8506b;
+  --sheet-red-2:#e23b58;
+  --sheet-line:#9a9a9a;
+  --sheet-bg:#ffffff;
+  --sheet-text:#1c1c1c;
+  --sheet-label:#8a8a8a;
 }
-form {
-    margin-bottom: 20px;
+
+/* ---------- PÁGINA ---------- */
+.ficha-page{ padding:120px 16px 60px; min-height:100vh; }
+
+.ficha-toolbar{
+  max-width:1180px; margin:0 auto 26px;
+  display:flex; gap:12px; flex-wrap:wrap; justify-content:center;
 }
-input {
-    margin-right: 10px;
+.ff-btn{
+  font-family:var(--ff-display,'Cinzel',serif);
+  font-size:.82rem; letter-spacing:.06em; text-transform:uppercase;
+  padding:.7rem 1.4rem; border-radius:4px; cursor:pointer;
+  border:1px solid var(--gold,#c8a95a); transition:.25s;
+}
+.ff-btn-print{ background:var(--gold,#c8a95a); color:#0a0a0f; }
+.ff-btn-pdf{ background:var(--crimson,#8b1a1a); border-color:var(--crimson-2,#b52525); color:#fff; }
+.ff-btn-ghost{ background:transparent; color:var(--gold,#c8a95a); }
+.ff-btn:hover{ transform:translateY(-2px); filter:brightness(1.1); }
+.ff-btn:disabled{ opacity:.55; cursor:wait; transform:none; }
+
+/* ---------- WRAPPER ROLÁVEL ---------- */
+.sheet-wrap{ width:100%; overflow-x:auto; padding-bottom:10px; }
+
+/* ---------- A FOLHA ---------- */
+.aermynuz-sheet{
+  width:1180px; margin:0 auto;
+  background:var(--sheet-bg); color:var(--sheet-text);
+  border:2px solid var(--sheet-dark);
+  padding:10px;
+  font-family:'Oswald',Arial,sans-serif;
+  box-shadow:0 10px 40px rgba(0,0,0,.5);
+}
+.sheet-title{
+  text-align:center; font-weight:700; letter-spacing:.12em;
+  font-size:1.45rem; padding:6px 0 12px; color:#222;
+  font-family:'Oswald',sans-serif; text-transform:uppercase;
+}
+.sheet-cols{ display:flex; gap:12px; align-items:flex-start; }
+.sheet-col{ flex:1; min-width:0; display:flex; flex-direction:column; gap:7px; }
+
+/* ---------- BARRAS DE TÍTULO ---------- */
+.bar{
+  font-weight:600; letter-spacing:.07em; text-transform:uppercase;
+  padding:5px 8px; font-size:.78rem; line-height:1.1;
+}
+.bar-dark{ background:var(--sheet-dark); color:#fff; }
+.bar-red{ background:var(--sheet-red); color:#fff; font-weight:600; }
+.center{ text-align:center; }
+
+/* ---------- TABELAS BASE ---------- */
+.t{ width:100%; border-collapse:collapse; table-layout:fixed; }
+.t td,.t th{
+  border:1px solid var(--sheet-line);
+  padding:0; height:24px; font-size:.7rem; text-align:center;
+  vertical-align:middle; overflow:hidden;
+}
+.t th{ background:var(--sheet-dark); color:#fff; font-weight:600; letter-spacing:.03em; text-transform:uppercase; }
+.t .bar-dark{ background:var(--sheet-dark); color:#fff; }
+.t .bar-red{ background:var(--sheet-red); color:#fff; }
+.t .k{
+  background:#fff; color:var(--sheet-label); text-align:left;
+  padding-left:6px; font-size:.66rem; letter-spacing:.02em;
+  text-transform:lowercase; white-space:nowrap;
+}
+.t .k.r{ text-transform:uppercase; color:#333; font-weight:600; font-size:.66rem; }
+.t .bar-dark.k{ color:#fff; text-transform:uppercase; font-weight:600; }
+.t input{
+  width:100%; height:22px; border:none; background:transparent;
+  text-align:center; font-family:'Oswald',sans-serif; font-size:.72rem;
+  color:#111; outline:none; padding:0 2px;
+}
+.t input:focus{ background:rgba(232,80,107,.08); }
+.unit{ color:#9a9a9a; font-size:.62rem; text-align:right; padding-right:5px; text-transform:lowercase; }
+.th-mini{
+  background:var(--sheet-dark); color:#fff; font-size:.58rem;
+  letter-spacing:.02em; text-transform:lowercase; font-weight:500;
+}
+.bar-red-line{ background:var(--sheet-red); }
+.total-red{ border:2px solid var(--sheet-red); }
+.total-red input{ font-weight:700; }
+
+/* inline label + input dentro da mesma célula (banco) */
+.kk{
+  text-align:left; padding-left:6px; color:var(--sheet-label);
+  font-size:.6rem; text-transform:lowercase; white-space:nowrap;
+}
+.kk input{ display:inline-block; width:62%; height:18px; }
+
+/* ---------- INFO / DESCRIÇÃO ---------- */
+.info-t .k{ width:24%; }
+
+/* ---------- ATRIBUTOS ---------- */
+.atr-t th{ font-size:.62rem; }
+.atr-t .k.r{ text-align:left; padding-left:6px; }
+.atr-t td:first-child,.atr-t th:first-child{ width:26%; }
+
+/* ---------- BÔNUS + APTIDÕES (2 colunas) ---------- */
+.two-up{ display:flex; gap:7px; align-items:flex-start; }
+.bonus-block{ flex:1.35; display:flex; flex-direction:column; gap:5px; }
+.apt-block{ flex:1; }
+
+.bonus-head{
+  background:#fff; border:1px solid var(--sheet-line);
+  font-weight:700; font-size:.66rem; text-transform:uppercase;
+  padding:3px 6px; display:flex; flex-direction:column; line-height:1.1;
+}
+.bonus-head span{ font-weight:400; font-size:.55rem; color:#888; text-transform:none; }
+.bonus-t th{ font-size:.5rem; height:16px; letter-spacing:0; }
+.bonus-t td{ height:22px; }
+
+.apt-t .apt-name{ text-align:left; padding-left:6px; width:64%; font-size:.66rem; }
+.apt-t .sm{ width:18%; font-size:.58rem; }
+.apt-t .k{ font-size:.62rem; text-transform:uppercase; color:#333; }
+
+/* ---------- PONTOS RESTANTES ---------- */
+.rest-t td:first-child{ width:34%; text-align:left; padding-left:6px; font-size:.62rem; }
+
+/* ---------- DESENVOLVIMENTO ---------- */
+.dev-t .k{ font-size:.58rem; }
+
+/* ---------- AMEAÇA ---------- */
+.ameaca-cell{
+  font-weight:700; letter-spacing:.05em; vertical-align:middle;
+  font-size:.72rem; width:16%;
+}
+
+/* ---------- BANCO ---------- */
+.banco-t th{ font-size:.6rem; }
+
+/* ---------- VIDA / MEMBRO ---------- */
+.vida-t .k{ text-transform:uppercase; color:#333; font-weight:600; font-size:.62rem; }
+.vida-t .pc{ font-size:.64rem; color:#444; }
+.vida-t td:first-child{ width:18%; }
+.dano-cell{ font-size:.58rem; }
+
+/* ---------- ESSÊNCIA ---------- */
+.essencia-t .sm{ font-size:.55rem; }
+
+/* ---------- DESTINO (pips) ---------- */
+.destino-t .dn{ width:20%; font-size:.6rem; }
+.pips{ padding:0 4px !important; }
+.pips span{
+  display:inline-block; width:9px; height:14px; margin:0 2px;
+  border-left:1px dashed #888; vertical-align:middle;
+}
+.pips span:first-child{ border-left:none; }
+
+/* ---------- EQUIPAMENTOS ---------- */
+.equip-t .k{ font-size:.6rem; }
+
+/* ---------- VESTIMENTAS ---------- */
+.vest-t .k{ font-size:.6rem; }
+
+/* ===========================================================
+   RESPONSIVO (tela)
+   =========================================================== */
+@media (max-width:1240px){
+  .aermynuz-sheet{ transform-origin:top center; }
+}
+
+/* ===========================================================
+   IMPRESSÃO — fiel à ficha física (preto/branco/cinza/vermelho)
+   =========================================================== */
+@media print{
+  @page{ size:A4 portrait; margin:6mm; }
+
+  body{ background:#fff !important; }
+  .no-print,.site-nav,.mobile-menu,.site-footer,.ficha-toolbar,
+  .page-header,.loading-overlay{ display:none !important; }
+
+  .ficha-page{ padding:0 !important; }
+  .sheet-wrap{ overflow:visible !important; padding:0 !important; }
+
+  .aermynuz-sheet{
+    width:100% !important; margin:0 !important; border:1.5px solid #000 !important;
+    box-shadow:none !important; padding:4px !important;
+    transform:scale(.985); transform-origin:top center;
+  }
+  .sheet-title{ font-size:1.1rem; padding:2px 0 6px; }
+  .sheet-cols{ gap:7px; }
+
+  /* preserva cores das barras */
+  .bar-dark,.t .bar-dark,.t th,.th-mini{
+    background:var(--sheet-dark) !important; color:#fff !important;
+  }
+  .bar-red,.t .bar-red,.bar-red-line{
+    background:var(--sheet-red) !important; color:#fff !important;
+  }
+  .total-red{ border-color:var(--sheet-red) !important; }
+
+  *{ -webkit-print-color-adjust:exact !important; print-color-adjust:exact !important; }
+
+  .t td,.t th{ height:20px; font-size:.62rem; }
+  .t input{ height:18px; font-size:.62rem; }
+  .bonus-head{ font-size:.58rem; }
 }
